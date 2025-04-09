@@ -150,7 +150,49 @@ Esta configuración, junto con una entrada senoidal, genera un **movimiento osci
 
 ### Configuracion Brick Solid
 
+La **Figura 7** muestra la confirguración para la creación de un cubo.
 
+Se ha especificado un vector de dimensiones de la forma `[1 1 1]`, lo que significa que el cuerpo tiene:
+
+  - **Ancho (X):** 1 metro  
+  - **Alto (Y):** 1 metro  
+  - **Profundidad (Z):** 1 metro
+
+  Esto configura un cubo perfecto de **1 m³** en el entorno de simulación.
+
+- **Unidad:**  
+  Las unidades están definidas en metros (`m`), lo cual es coherente con la mayoría de los entornos físicos simulados y facilita el análisis dimensional y de escalado.
+
+- **Compile-time:**  
+  Esta opción indica que las dimensiones están definidas en tiempo de compilación, es decir, no cambian durante la simulación.
+
+![image](https://github.com/user-attachments/assets/15d44cf6-9d75-4eac-bdeb-5ad4b7a29ddd)
+
+***Fig 8. Brick Solid***
+
+### SIMULACION
+
+Durante la ejecución de la simulación, se puede observar el comportamiento dinámico del cubo creado mediante el bloque **Solid**. Este cubo está acoplado a una **junta prismática (Prismatic Joint)**, la cual permite desplazamientos exclusivamente a lo largo de un eje lineal, en este caso, el eje vertical (eje Y).
+
+Gracias a la señal senoidal aplicada como entrada de movimiento al **Prismatic Joint**, el cubo ejecuta un **movimiento oscilatorio de traslación vertical**, subiendo y bajando de forma periódica a lo largo del tiempo.
+
+En la **Figura 9** se puede ver el cubo durante uno de los ciclos de su movimiento oscilante. El cubo aparece desplazado hacia una posición inferior, lo cual confirma la acción de la onda senoidal que modula su posición al igual que en la **Figura 10** ya que el cubo aparece desplazado hacia una posición inferior.
+
+En la animación de la simulación se aprecia claramente cómo el cubo:
+
+- Asciende y desciende suavemente en función de la amplitud y frecuencia de la onda senoidal configurada.
+- Mantiene una trayectoria rectilínea sobre el eje **Y**, gracias a las restricciones impuestas por el **Prismatic Joint**.
+- Responde con fluidez al perfil de entrada definido, evidenciando un correcto acoplamiento entre el mundo físico (Simscape) y el entorno de señales matemáticas (Simulink).
+
+Este resultado valida el modelo construido, confirmando que la interacción entre los bloques ha sido correctamente configurada para simular un comportamiento físico realista.
+
+![image](https://github.com/user-attachments/assets/ca005403-439f-4eb2-86da-5df6b42d9c85)
+
+***Fig 9. Movimiento del cubo inferior***
+
+![image](https://github.com/user-attachments/assets/7f131fd2-57e5-42ea-a472-83b50261097b)
+
+***Fig 10. Movimiento del cubo superior***
 
 ## 3) Ejercicios
 
