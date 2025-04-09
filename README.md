@@ -382,7 +382,6 @@ La utilización de bloques como `Solid`, `Prismatic Joint`, y `Simulink-PS Conve
 - La posibilidad de monitorear variables como la posición mediante sensores permite no solo validar el comportamiento del sistema, sino también diseñar futuros esquemas de control.
 - Simscape Multibody se presenta como una herramienta robusta y versátil para el análisis, simulación y validación de mecanismos físicos, ofreciendo un entorno visual e interactivo que mejora el proceso de diseño ingenieril.
 - La integración entre Simulink y Simscape Multibody mejora significativamente la visualización de los resultados, permitiendo identificar comportamientos anómalos o inesperados en el sistema mecánico desde una perspectiva gráfica y animada.
-- El uso de bloques de control como `Signal Builder` o funciones senoidales abre la puerta al diseño de pruebas dinámicas sobre mecanismos, lo cual es útil para validar respuestas antes de construir un prototipo físico.
 - A través de la simulación, es posible modificar rápidamente parámetros como masa, dimensiones o frecuencias, lo cual ahorra tiempo y recursos en la etapa de diseño y verificación.
 - La simulación del sistema evidenció la importancia del análisis cinemático y dinámico en el diseño de mecanismos, permitiendo predecir reacciones y desplazamientos ante fuerzas externas o condiciones específicas.
 - Se logró fortalecer la capacidad de análisis sistémico del estudiante al requerir la combinación de herramientas de modelado físico con conceptos teóricos de mecánica clásica.
