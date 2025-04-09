@@ -17,7 +17,18 @@ La conectividad entre los cuerpos rígidos se logra mediante **juntas mecánicas
 
 - 🔧 **Revolute Joint**: permite la rotación relativa entre dos sólidos alrededor de un eje fijo. Es comparable a una bisagra o a una articulación como el codo en un brazo robótico.
 
+
+![image](https://github.com/user-attachments/assets/e701a845-b586-4226-b350-0fbb9ef036fe)
+
+***Fig 1. Revolute Joing***
+
+
 - 🔧 **Prismatic Joint**: restringe el movimiento a una sola dimensión lineal. Es similar al comportamiento de un pistón o actuador lineal.
+
+![image](https://github.com/user-attachments/assets/271a360b-e82a-4d06-ae96-bbde94dd4e32)
+
+***Fig 2. Prismatic Joing***
+
 
 Además, se pueden integrar **actuadores** y **sensores** en el modelo para aplicar fuerzas, torques, o movimientos predefinidos, y para medir variables físicas como:
 
@@ -35,7 +46,7 @@ Una herramienta fundamental en la interacción entre el entorno físico y el mat
 
 ## 2) Ejemplos
 
-### ✅ Caso 1: Sistema biela-manivela
+### ✅ Caso 1: Sistema biela-manivela-corredera
 
 Este mecanismo clásico puede modelarse con tres cuerpos rígidos: manivela, biela y pistón. 
 
@@ -61,7 +72,7 @@ En un sistema de suspensión:
 - Se usan juntas rotacionales y traslacionales para simular los grados de libertad del sistema.
 - Se pueden incluir resortes y amortiguadores para representar las fuerzas de suspensión.
 
-Este modelo es útil para evaluar el comportamiento del vehículo en condiciones de carga o diferentes terrenos.
+En el ejemplo presentado a continuación se podra obser el funcionamiento
 
 ### ✅ Caso 4: Señales dinámicas con PS Converter
 
