@@ -44,7 +44,12 @@ Una herramienta fundamental en la interacción entre el entorno físico y el mat
 
 ---
 
-## 2) Ejemplos
+A continuación se mostrara un ejemplo basado en el movimiento de un cubo, con la finalidad de usar los elementos vistos anteriormente
+
+## 2) Ejemplo
+
+
+## 3) Ejercicios
 
 ### ✅ Caso 1: Sistema biela-manivela-corredera
 
