@@ -190,7 +190,7 @@ Este resultado valida el modelo construido, confirmando que la interacción entr
 
 ***Fig 9. Movimiento del cubo inferior***
 
-![image](https://github.com/user-attachments/assets/7f131fd2-57e5-42ea-a472-83b50261097b)
+![image](https://github.com/user-attachments/assets/60dd17f3-9c65-4ed6-9a59-77b6c9839e58)
 
 ***Fig 10. Movimiento del cubo superior***
 
@@ -200,11 +200,67 @@ Este resultado valida el modelo construido, confirmando que la interacción entr
 
 Este mecanismo clásico puede modelarse con tres cuerpos rígidos: manivela, biela y pistón. 
 
-- La manivela gira con una `Revolute Joint`.
-- El pistón se traslada con una `Prismatic Joint`.
-- La biela interconecta ambos y transmite el movimiento.
+![image](https://github.com/user-attachments/assets/570e2076-b81d-430f-9586-223987135b0b)
 
-Este modelo es útil para estudiar cómo un movimiento rotacional se convierte en traslacional, tal como ocurre en un motor de combustión interna.
+***Fig 11. Esquema del Sistema Biela-Manivela-Corredera***
+
+La **Figura 11** representa la implementación en Simulink/Simscape Multibody de un mecanismo clásico compuesto por **biela**, **manivela** y **corredera**. Este tipo de sistema es ampliamente utilizado en aplicaciones como motores de combustión interna y compresores, debido a su capacidad de convertir un **movimiento rotacional** en **movimiento lineal**.
+
+#### Descripción del Modelo
+
+El modelo se estructura a partir de varios bloques fundamentales de Simscape Multibody:
+
+- **Solver Configuration**: Configura el solucionador para realizar la simulación física.
+- **World Frame**: Define el sistema de referencia inercial global.
+- **Mechanism Configuration**: Permite ajustar condiciones globales del sistema, como la gravedad.
+- **Simulink-PS Converter**: Convierte una señal senoidal de entrada de Simulink en una señal física (PS) utilizable por los bloques de Simscape.
+- **PS-Simulink Converter**: Convierte señales físicas de salida nuevamente al dominio de Simulink para su visualización (por ejemplo, en el Scope).
+
+#### Componentes del Mecanismo
+
+1. **Manivela**: 
+   - Bloque sólido que gira continuamente alrededor de un eje fijo mediante una **Revolute Joint** (articulación rotacional).
+   - El movimiento rotacional se genera mediante la señal senoidal conectada a la junta rotacional, simulando un eje impulsor.
+
+2. **Biela**: 
+   - Conectada entre la manivela y la corredera mediante dos juntas **Revolute Joint**.
+   - Transmite el movimiento rotacional de la manivela a la corredera en forma de desplazamiento lineal.
+
+3. **Corredera**: 
+   - Representada como un sólido que se mueve linealmente gracias a una **Prismatic Joint**.
+   - Esta junta limita el movimiento a lo largo de un solo eje (en este caso, lineal horizontal o vertical, según la configuración del modelo).
+   - El desplazamiento de la corredera se visualiza mediante un bloque **Scope**.
+
+4. **Rigid Transform**:
+   - Se utiliza para establecer posiciones relativas entre los distintos componentes sólidos y ajustar alineaciones físicas.
+
+#### Funcionalidad
+
+El sistema convierte el **movimiento oscilatorio rotacional de la manivela**, provocado por la onda senoidal, en un **movimiento alternativo rectilíneo de la corredera**. La biela actúa como el eslabón intermedio que transmite y adapta el movimiento entre las otras dos partes.
+
+Este modelo permite observar en tiempo real cómo se comporta un sistema mecánico real bajo condiciones de entrada dinámicas y es útil tanto en simulaciones de diseño como en estudios de control y dinámica de mecanismos.
+
+#### Simulación
+
+En Las **Figura 12** y **Figura 13**  se muestran capturas de la simulación en Simscape Multibody del sistema biela-manivela-corredera. En esta vista, se pueden observar claramente los tres elementos principales del mecanismo:
+
+- **Manivela** (bloque azul a la izquierda),
+- **Biela** (elemento en color magenta),
+- **Corredera** (bloque marrón a la derecha).
+
+![image](https://github.com/user-attachments/assets/3d3dbf0d-e8b4-4666-889d-926d9f08844f)
+ 
+***Fig 12. simulacion1 del Sistema Biela-Manivela-Corredera***
+
+![image](https://github.com/user-attachments/assets/a766ed80-13c7-47f0-99fa-4f7484e5b91f)
+
+***Fig 13. simulacion2 del Sistema Biela-Manivela-Corredera***
+
+En la animación se puede notar que:
+
+- El conjunto de cuerpos rígidos reacciona de manera continua a la entrada de onda senoidal.
+- La **biela** actúa como eslabón intermediario dinámico, cambiando de orientación para acompañar tanto el giro de la manivela como el desplazamiento de la corredera.
+- El sistema completo funciona de manera armónica, simulando fielmente un **ciclo mecánico completo**, como el que ocurre en el pistón de un motor de combustión interna.
 
 ### ✅ Caso 2: Manipulador robótico
 
