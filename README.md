@@ -262,13 +262,62 @@ En la animación se puede notar que:
 - La **biela** actúa como eslabón intermediario dinámico, cambiando de orientación para acompañar tanto el giro de la manivela como el desplazamiento de la corredera.
 - El sistema completo funciona de manera armónica, simulando fielmente un **ciclo mecánico completo**, como el que ocurre en el pistón de un motor de combustión interna.
 
-### ✅ Caso 2: Manipulador robótico
+### ✅ Caso 2: tres eslabones
 
-Un brazo robótico puede representarse con múltiples eslabones conectados con `Revolute Joints`. Cada articulación permite la rotación relativa entre los segmentos. Se pueden aplicar torques y medir ángulos con sensores para:
+El modelo de un mecanismo compuesto por **tres eslabones** conectados mediante **juntas rotacionales (Revolute Joints)** permite representar con fidelidad el comportamiento de sistemas articulados como brazos robóticos, extremidades mecánicas o manipuladores articulados.
 
-- Controlar trayectorias
-- Analizar cinemática y dinámica
-- Validar estrategias de control
+La **Figura 14** representa un sistema mecánico compuesto por **tres eslabones** conectados secuencialmente mediante **juntas rotacionales (Revolute Joints)**. Este tipo de configuración es comúnmente utilizada en mecanismos articulados como brazos robóticos y manipuladores.
+
+![image](https://github.com/user-attachments/assets/0a2a3750-5ff9-4512-9b81-6f2b4f8d5496)
+
+***Fig 14. Esquema de diseño de 3 eslabones***
+
+### Componentes del Modelo
+
+- **Solver Configuration**: Define los parámetros de resolución del modelo físico.
+- **World Frame**: Establece el marco de referencia global para la simulación.
+- **Mechanism Configuration**: Permite especificar condiciones físicas del entorno como la gravedad.
+- **Rigid Transform**: Posiciona el primer eslabón respecto al marco global.
+
+
+### Estructura de los Eslabones
+
+1. **Eslabón 1**
+   - Conectado al **World Frame** mediante una **Revolute Joint**.
+   - Permite la rotación inicial del sistema.
+   - Simula una base giratoria.
+
+2. **Eslabón 2**
+   - Unido al extremo del eslabón 1 mediante una segunda **Revolute Joint**.
+   - Esta articulación permite el movimiento relativo entre el primer y segundo segmento.
+   - El bloque de sólido representa su geometría y masa.
+
+3. **Eslabón 3**
+   - Conectado al final del segundo eslabón a través de una tercera **Revolute Joint**.
+   - Funciona como el extremo libre o efector del sistema.
+
+### Funcionalidad del Sistema
+
+- **Actuación rotacional**: A través de las juntas rotacionales, se puede aplicar movimiento controlado a cada eslabón.
+- **Medición angular**: Mediante sensores en las juntas se puede obtener la posición angular de cada articulación.
+- **Salida a Scope**: El ángulo de alguna de las juntas es enviado a un bloque `Scope` mediante un `PS-Simulink Converter`, permitiendo visualizar la respuesta dinámica del sistema.
+
+### Simulación.
+
+Las **Figuras 15, 16 y 17** corresponden a diferentes momentos capturados durante la simulación del mecanismo de **tres eslabones** articulados mediante juntas rotacionales (`Revolute Joint`). Este sistema puede asociarse conceptualmente con un brazo robótico en movimiento, en el cual cada eslabón se mueve como resultado de las señales de entrada que provocan rotaciones en las articulaciones.
+
+![image](https://github.com/user-attachments/assets/a352502e-9950-41d8-99b8-658e26a209a6)
+
+***Fig 15. Simulacion 1 de diseño de 3 eslabones***
+
+![image](https://github.com/user-attachments/assets/f6ed20c8-2f52-4ae3-ae7d-150c6ca087b9)
+
+***Fig 16. Simulacion 2 de diseño de 3 eslabones***
+
+![image](https://github.com/user-attachments/assets/66426e1e-cfa2-4df8-86fb-1f6f42c00ca6)
+
+***Fig 17. Simulacion 3 de diseño de 3 eslabones***
+
 
 ### ✅ Caso 3: Suspensión automotriz
 
@@ -279,16 +328,6 @@ En un sistema de suspensión:
 - Se pueden incluir resortes y amortiguadores para representar las fuerzas de suspensión.
 
 En el ejemplo presentado a continuación se podra obser el funcionamiento
-
-### ✅ Caso 4: Señales dinámicas con PS Converter
-
-Gracias al bloque `PS Converter`, es posible tomar señales generadas desde Simulink, como:
-
-- Ondas senoidales
-- Señales cuadradas
-- Resultados de un controlador PID
-
-Estas señales pueden aplicarse a una junta o actuador, permitiendo simular entradas reales al sistema físico y observar su respuesta.
 
 ---
 
