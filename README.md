@@ -1,4 +1,3 @@
-# Bie-mani-corre
 
 # Diseño de Eslabones con Simulink y Simscape Multibody
 
@@ -306,15 +305,15 @@ La **Figura 14** representa un sistema mecánico compuesto por **tres eslabones*
 
 Las **Figuras 15, 16 y 17** corresponden a diferentes momentos capturados durante la simulación del mecanismo de **tres eslabones** articulados mediante juntas rotacionales (`Revolute Joint`). Este sistema puede asociarse conceptualmente con un brazo robótico en movimiento, en el cual cada eslabón se mueve como resultado de las señales de entrada que provocan rotaciones en las articulaciones.
 
-![image](https://github.com/user-attachments/assets/a352502e-9950-41d8-99b8-658e26a209a6)
+![image](https://github.com/user-attachments/assets/7fbfee20-4f56-4bc3-953c-7f3de4c63acc)
 
 ***Fig 15. Simulacion 1 de diseño de 3 eslabones***
 
-![image](https://github.com/user-attachments/assets/f6ed20c8-2f52-4ae3-ae7d-150c6ca087b9)
+![image](https://github.com/user-attachments/assets/657b20b4-5b67-417d-82ad-c2e449923a1d)
 
 ***Fig 16. Simulacion 2 de diseño de 3 eslabones***
 
-![image](https://github.com/user-attachments/assets/66426e1e-cfa2-4df8-86fb-1f6f42c00ca6)
+![image](https://github.com/user-attachments/assets/1091a68a-ea4d-439d-9b28-08f911012cfa)
 
 ***Fig 17. Simulacion 3 de diseño de 3 eslabones***
 
@@ -327,20 +326,66 @@ En un sistema de suspensión:
 - Se usan juntas rotacionales y traslacionales para simular los grados de libertad del sistema.
 - Se pueden incluir resortes y amortiguadores para representar las fuerzas de suspensión.
 
-En el ejemplo presentado a continuación se podra obser el funcionamiento
+En la **Figura 18** se muestra un modelo básico en Simscape Multibody representa el movimiento lineal de un cubo, útil como punto de partida para simular sistemas mecánicos más complejos. Un ejemplo claro de aplicación sería el modelado de un sistema de suspensión automotriz, donde el movimiento del cubo puede representar el desplazamiento vertical de la rueda o la masa suspendida del vehículo al interactuar con el terreno.
+
+![image](https://github.com/user-attachments/assets/d63b7486-699b-4263-ab57-e3f2b3c9dfc2)
+
+***Fig 18. Suspension***
+
+### Componentes del Modelo
+
+- **Solver Configuration**: Establece los parámetros numéricos necesarios para la resolución del modelo físico.
+- **World Frame**: Define el marco de referencia absoluto para todo el sistema mecánico.
+- **Mechanism Configuration**: Permite configurar propiedades globales del entorno como la gravedad.
+- **Simulink-PS Converter**: Convierte señales de Simulink a señales físicas para interactuar con bloques de Simscape.
+- **Rigid Transform**: Ajusta la posición y orientación del sólido respecto al marco global.
+- **Brick Solid**: Representa un cubo con propiedades físicas como masa, volumen y geometría.
+
+### Estructura del Sistema
+
+1. **Sistema de Entrada**
+   - Una señal de entrada tipo onda (por ejemplo, sinusoidal) es transformada en una señal física mediante el bloque `Simulink-PS Converter`.
+   - Esta señal puede representar una fuerza aplicada al sistema.
+
+2. **Transformación Rígida**
+   - El bloque `Rigid Transform` define la posición inicial del cubo en el espacio tridimensional.
+   - Sirve para conectar correctamente el sólido al marco de referencia global.
+
+3. **Cubo (Brick Solid)**
+   - Actúa como el objeto físico que responde a la entrada de fuerza o movimiento.
+   - Puede desplazarse linealmente, simulando el comportamiento de una masa móvil.
+
+### Funcionalidad del Sistema
+
+- **Simulación de movimiento lineal**: El sistema está diseñado para analizar el desplazamiento de un sólido (cubo) en una dimensión, producto de una entrada definida.
+- **Base para aplicaciones prácticas**: Esta estructura básica puede servir como base para simular fenómenos más complejos, como un sistema de **suspensión automotriz**, en el que el cubo representa la masa suspendida (por ejemplo, el chasis del vehículo).
+- **Interacción mecánica**: Permite estudiar la respuesta dinámica del sólido ante una fuerza externa o entrada controlada.
+
+### Simulación
+
+Las **Figuras 19 y 20** muestran el desplazamiento progresivo del cubo a lo largo del eje **X** en distintos momentos de la simulación, como resultado de una entrada física aplicada al sistema.
+
+![image](https://github.com/user-attachments/assets/9e6a6e8f-29c5-4c88-a9dd-a17c4098fe81)
+
+***Fig 19.  Simulación 1 Suspension***
+
+![image](https://github.com/user-attachments/assets/e6d408b4-2446-4b64-be84-d1272e698e41)
+
+***Fig 20.  Simulación 1 Suspension***
 
 ---
-
 ## 3) Conclusiones
 
-El modelado de sistemas mecánicos mediante Simscape Multibody en Simulink permite:
+La utilización de bloques como `Solid`, `Prismatic Joint`, y `Simulink-PS Converter` facilita la representación precisa de componentes físicos, así como la interacción entre señales matemáticas y sistemas mecánicos reales.
+- La configuración detallada de los parámetros físicos y dinámicos, como masa, geometría y fuerza actuadora, resulta clave para lograr simulaciones realistas y controladas.
+- El movimiento oscilatorio vertical prescrito mediante una señal senoidal demostró cómo es posible emular comportamientos dinámicos simples, pero útiles, que pueden escalarse a sistemas más complejos.
+- La posibilidad de monitorear variables como la posición mediante sensores permite no solo validar el comportamiento del sistema, sino también diseñar futuros esquemas de control.
+- Simscape Multibody se presenta como una herramienta robusta y versátil para el análisis, simulación y validación de mecanismos físicos, ofreciendo un entorno visual e interactivo que mejora el proceso de diseño ingenieril.
+- La integración entre Simulink y Simscape Multibody mejora significativamente la visualización de los resultados, permitiendo identificar comportamientos anómalos o inesperados en el sistema mecánico desde una perspectiva gráfica y animada.
+- El uso de bloques de control como `Signal Builder` o funciones senoidales abre la puerta al diseño de pruebas dinámicas sobre mecanismos, lo cual es útil para validar respuestas antes de construir un prototipo físico.
+- A través de la simulación, es posible modificar rápidamente parámetros como masa, dimensiones o frecuencias, lo cual ahorra tiempo y recursos en la etapa de diseño y verificación.
+- La simulación del sistema evidenció la importancia del análisis cinemático y dinámico en el diseño de mecanismos, permitiendo predecir reacciones y desplazamientos ante fuerzas externas o condiciones específicas.
+- Se logró fortalecer la capacidad de análisis sistémico del estudiante al requerir la combinación de herramientas de modelado físico con conceptos teóricos de mecánica clásica.
+- El proyecto sienta las bases para la implementación de estrategias de control automatizado en sistemas físicos reales, ya que los mismos principios pueden ser aplicados posteriormente a sistemas con actuadores eléctricos, sensores y controladores.
 
-- Simular con precisión mecanismos con múltiples grados de libertad.
-- Visualizar el comportamiento dinámico de los eslabones.
-- Medir y analizar variables como torques, fuerzas, desplazamientos y velocidades angulares.
-
-La combinación de bloques como `Solid`, `Revolute Joint`, `Prismatic Joint` y `PS Converter` ofrece una plataforma potente y versátil para diseñar, analizar y validar prototipos virtuales antes de su implementación física.
-
-Además, la integración de señales externas posibilita la aplicación de estrategias de control avanzado, análisis de comportamiento ante perturbaciones y validación de algoritmos de optimización e inteligencia artificial.
-
-En resumen, el conocimiento profundo sobre el modelado de eslabones y su implementación en Simulink es una base sólida para enfrentar retos en automatización, robótica, diseño mecánico y control de sistemas complejos.
+Esta experiencia de modelado ha permitido consolidar los conocimientos sobre la interacción entre los entornos de simulación matemática y física, aportando una base sólida para el diseño y análisis de mecanismos más complejos en el futuro.
