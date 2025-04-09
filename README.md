@@ -123,6 +123,35 @@ Esta configuración permite generar una señal senoidal suave y periódica, adec
 
 ***Fig 6. Sine Wane***
 
+### Configuracion Prismatic Joing
+
+La **Figura 7** muestra la configuración del bloque **Prismatic Joint**, empleado para restringir el movimiento relativo entre dos cuerpos rígidos a lo largo de un solo eje lineal. En este caso, se ha configurado la **primitiva prismatic Z (Pz)**, lo que indica que el movimiento permitido se realiza únicamente sobre el eje **Z** del sistema de coordenadas.
+
+**Parámetros configurados:***
+
+- **Actuation**:
+  - **Force:** `Automatically Computed`  
+    El bloque calcula automáticamente la fuerza requerida para que el cuerpo se mueva según la señal de entrada prescrita, considerando las fuerzas externas, como la gravedad.
+  
+  - **Motion:** `Provided by Input`  
+    El desplazamiento del cuerpo móvil no se determina por las leyes físicas del sistema, sino que es impuesto directamente desde una entrada externa. Esta entrada proviene de una señal física (por ejemplo, una onda senoidal convertida desde Simulink mediante un **Simulink-PS Converter**).
+
+- **Sensing**:
+  - ✅ **Position:** Activada  
+    Esta opción permite medir en tiempo real la posición del cuerpo a lo largo del eje Z. La activación de esta opción es útil para monitoreo, análisis posterior o para la implementación de lazos de control en tiempo real.
+  
+  - Las demás opciones (Velocity, Acceleration, Actuator Force, etc.) no están activadas en esta configuración, pero podrían habilitarse si se requiere una observación más detallada del comportamiento dinámico del sistema.
+
+Esta configuración, junto con una entrada senoidal, genera un **movimiento oscilatorio vertical prescrito** del cuerpo (cubo) en el eje Z. Gracias al sensor de posición activado, es posible visualizar y registrar la trayectoria del cubo a lo largo del tiempo, lo que resulta útil para validar el comportamiento deseado o comparar contra otras estrategias de control.
+
+![image](https://github.com/user-attachments/assets/530f6d3e-e831-4a27-9c1a-34991b193078)
+
+***Fig 7. Prismatic Joing***
+
+### Configuracion Brick Solid
+
+
+
 ## 3) Ejercicios
 
 ### ✅ Caso 1: Sistema biela-manivela-corredera
