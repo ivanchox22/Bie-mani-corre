@@ -48,6 +48,8 @@ Una herramienta fundamental en la interacción entre el entorno físico y el mat
 ---
 
 ## 2) Ejemplo
+
+💡***Ejemplo 1***
 A continuación, se presentará un ejemplo de simulación mecánica que ilustra el comportamiento dinámico de un cubo en movimiento. Este modelo tiene como objetivo aplicar los conceptos y componentes previamente descritos, tales como eslabones rígidos, juntas y señales físicas dentro del entorno de Simulink con Simscape Multibody.
 
 En particular, el sistema simulado representa un movimiento oscilatorio vertical del cubo, caracterizado por un desplazamiento alternante de subida y bajada a lo largo de un único eje (movimiento traslacional unidimensional). Este comportamiento se implementa mediante una Prismatic Joint, la cual restringe el movimiento del cuerpo rígido a un solo grado de libertad lineal.
@@ -388,3 +390,15 @@ La utilización de bloques como `Solid`, `Prismatic Joint`, y `Simulink-PS Conve
 - El proyecto sienta las bases para la implementación de estrategias de control automatizado en sistemas físicos reales, ya que los mismos principios pueden ser aplicados posteriormente a sistemas con actuadores eléctricos, sensores y controladores.
 
 Esta experiencia de modelado ha permitido consolidar los conocimientos sobre la interacción entre los entornos de simulación matemática y física, aportando una base sólida para el diseño y análisis de mecanismos más complejos en el futuro.
+
+## 4) Referencias
+
+- MathWorks. (2024). *Simscape Multibody User’s Guide*. The MathWorks, Inc. https://www.mathworks.com/help/physmod/sm/  
+Guía oficial de MathWorks que explica el uso de bloques como Solid, Revolute Joint, Prismatic Joint y Simulink-PS Converter.
+
+- MathWorks. (2024). *Simulink Documentation*. The MathWorks, Inc. https://www.mathworks.com/help/simulink/  
+Referencia general del entorno Simulink para la creación y control de modelos mediante señales y algoritmos.
+
+- The MathWorks, Inc. (2020, abril 9). *Physical Modeling Tutorial, Part 6: Introduction to Multibody Simulation* [Video]. YouTube. https://www.youtube.com/watch?v=lItmRlH4iBw  
+Tutorial visual sobre modelado físico y simulación multibody con herramientas de MathWorks.
+
